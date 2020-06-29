@@ -24,8 +24,9 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        val items = ArrayList<InvoiceModel>()
+        items.add(InvoiceModel("Einkauf", "Digital", "27.05.2020 12:00 Uhr", "Wasser für Firma gekauft", null, "Portmonaiee", true))
+
+
     }
 }
