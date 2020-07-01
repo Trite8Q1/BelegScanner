@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -25,8 +26,12 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val items = ArrayList<InvoiceModel>()
-        items.add(InvoiceModel("Einkauf", "Digital", "27.05.2020 12:00 Uhr", "Wasser für Firma gekauft", null, "Portmonaiee", true))
+        val adapter = context?.let { InvoiceListAdapter(it, items) }
 
+        for (i in 0..40) {
+            items.add(InvoiceModel("Einkauf", "Digital", "27.05.2020 12:00 Uhr", "Wasser für Firma gekauft", null, "Portmonaiee", true))
+        }
 
+        invoiceList.adapter = adapter
     }
 }
