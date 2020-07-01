@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvAddInvoiceName"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/invoice_name"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAddInvoiceType"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/type_of_invoice"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddInvoiceName" />
+
+    <TextView
+        android:id="@+id/tvAddUsage"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/usage"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddDateTime" />
+
+    <TextView
+        android:id="@+id/tvAddContributor"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/contributor"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddUsage" />
+
+    <TextView
+        android:id="@+id/tvAddOptional"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/optional"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddStorageLocation" />
+
+    <TextView
+        android:id="@+id/tvAddStorageLocation"
+        android:layout_width="102dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/storage_location"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChoosePicture" />
+
+    <TextView
+        android:id="@+id/tvAddDateTime"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/date_and_time"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddInvoiceType" />
+
+    <Button
+        android:id="@+id/btnChoosePicture"
+        android:layout_width="188dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/choose_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddContributor" />
+
+    <Button
+        android:id="@+id/btnAddSave"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddOptional" />
+
+    <Button
+        android:id="@+id/btnAddCancel"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddSave"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddOptional" />
+
+    <EditText
+        android:id="@+id/inputAddInvoiceType2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/invoice_type"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvAddUsage"
+        app:layout_constraintTop_toBottomOf="@+id/inputNow"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/inputAddContributor"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/contributor"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvAddContributor"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceType2"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/inputAddStorageLocation"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/location"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvAddStorageLocation"
+        app:layout_constraintTop_toBottomOf="@+id/btnChoosePicture"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/inputAddInvoiceName"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/invoice_name"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvAddInvoiceName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+
+    <RadioButton
+        android:id="@+id/inputNow"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/now"
+        app:layout_constraintStart_toEndOf="@+id/tvAddDateTime"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <RadioButton
+        android:id="@+id/inputAddOptional"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/for_enterprise"
+        app:layout_constraintStart_toEndOf="@+id/tvAddOptional"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddStorageLocation" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="130dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toEndOf="@+id/tvAddInvoiceType"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

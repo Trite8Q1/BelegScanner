@@ -3,10 +3,26 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="add_invoice_item_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invoice_name">Invoice Name</string>
+    <string name="type_of_invoice">Type of Invoice</string>
+    <string name="usage">Usage</string>
+    <string name="contributor">Contributor</string>
+    <string name="optional">Optional</string>
+    <string name="storage_location">Storage Location</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="choose_picture">Choose Picture</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="invoice_type">Invoice type</string>
+    <string name="location">Location</string>
+    <string name="now">Now</string>
+    <string name="for_enterprise">For Enterprise</string>
 </resources>
