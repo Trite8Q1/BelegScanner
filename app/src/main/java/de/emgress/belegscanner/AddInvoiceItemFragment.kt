@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +45,8 @@ class AddInvoiceItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spinner: Spinner = requireView().findViewById<Spinner>(R.id.spinner)
+        val btnCancel: Button = requireView().findViewById(R.id.btnAddCancel)
+        val spinner: Spinner = requireView().findViewById<Spinner>(R.id.inputSpinner)
 
         context?.let { ArrayAdapter.createFromResource(it,R.array.invoice_types, android.R.layout.simple_spinner_item).also {
                 adapter ->
@@ -50,6 +54,10 @@ class AddInvoiceItemFragment : Fragment() {
             spinner.adapter = adapter
         } }
 
+        btnCancel.setOnClickListener {
+            val navController: NavController = findNavController()
+            navController.navigate(R.id.FirstFragment)
+        }
     }
 
     companion object {

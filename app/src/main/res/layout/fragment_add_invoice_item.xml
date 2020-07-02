@@ -120,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAddOptional" />
 
     <EditText
-        android:id="@+id/inputAddInvoiceType2"
+        android:id="@+id/inputAddInvoiceUsage"
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_marginStart="76dp"
@@ -144,7 +144,7 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/tvAddContributor"
-        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceType2"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceUsage"
         android:autofillHints="" />
 
     <EditText
@@ -183,7 +183,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/now"
         app:layout_constraintStart_toEndOf="@+id/tvAddDateTime"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSpinner" />
 
     <RadioButton
         android:id="@+id/inputAddOptional"
@@ -196,7 +196,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputAddStorageLocation" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/inputSpinner"
         android:layout_width="130dp"
         android:layout_height="33dp"
         android:layout_marginStart="76dp"
