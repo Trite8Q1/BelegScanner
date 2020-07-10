@@ -7,14 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class InvoiceListAdapter(context : Context, items : ArrayList<InvoiceModel>) : BaseAdapter() {
-    public val context : Context
-    public val items : ArrayList<InvoiceModel>
-
-    init {
-        this.context = context
-        this.items = items
-    }
+class InvoiceListAdapter(val context : Context, val data : List<InvoiceModel>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater = LayoutInflater.from(context)
@@ -22,14 +15,14 @@ class InvoiceListAdapter(context : Context, items : ArrayList<InvoiceModel>) : B
         val tvName = listEntry.findViewById<TextView>(R.id.tvInvoiceName)
         val tvDate = listEntry.findViewById<TextView>(R.id.tvInvoiceDate)
 
-        tvName.text = items[position].invoiceName
-        tvDate.text = items[position].invoiceDate
+        tvName.text = data[position].invoiceName.toString()
+        tvDate.text = data[position].invoiceDate.toString()
 
         return listEntry
     }
 
     override fun getItem(position: Int): InvoiceModel {
-        return items[position]
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -37,6 +30,6 @@ class InvoiceListAdapter(context : Context, items : ArrayList<InvoiceModel>) : B
     }
 
     override fun getCount(): Int {
-        return items.size
+        return data.size
     }
 }
