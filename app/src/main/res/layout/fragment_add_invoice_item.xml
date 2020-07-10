@@ -100,7 +100,7 @@
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
@@ -112,7 +112,7 @@
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/cancel"
         app:layout_constraintEnd_toStartOf="@+id/btnAddSave"
         app:layout_constraintHorizontal_bias="0.71"
@@ -120,18 +120,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAddOptional" />
 
     <EditText
-        android:id="@+id/inputAddInvoiceType2"
+        android:id="@+id/inputAddInvoiceUsage"
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="15dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/invoice_type"
+        android:hint="@string/invoice_usage"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/tvAddUsage"
-        app:layout_constraintTop_toBottomOf="@+id/inputNow"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDateTime" />
 
     <EditText
         android:id="@+id/inputAddContributor"
@@ -144,7 +144,7 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/tvAddContributor"
-        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceType2"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddInvoiceUsage"
         android:autofillHints="" />
 
     <EditText
@@ -176,14 +176,14 @@
         android:autofillHints="" />
 
     <RadioButton
-        android:id="@+id/inputNow"
+        android:id="@+id/inputDateTime"
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="15dp"
         android:text="@string/now"
         app:layout_constraintStart_toEndOf="@+id/tvAddDateTime"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSpinner" />
 
     <RadioButton
         android:id="@+id/inputAddOptional"
@@ -196,7 +196,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputAddStorageLocation" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/inputSpinner"
         android:layout_width="130dp"
         android:layout_height="33dp"
         android:layout_marginStart="76dp"

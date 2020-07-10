@@ -21,7 +21,7 @@
     <string name="choose_picture">Choose Picture</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="invoice_type">Invoice type</string>
+    <string name="invoice_usage">Invoice usage</string>
     <string name="location">Location</string>
     <string name="now">Now</string>
     <string name="for_enterprise">For Enterprise</string>

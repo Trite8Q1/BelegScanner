@@ -1,8 +1,19 @@
 package de.emgress.belegscanner
 
-data class InvoiceModel(val invoiceName : String, val invoiceType: String, val invoiceDate : String, val invoiceUsage : String, val invoiceContributor : String?, val invoiceStorageLocation : String?, val invoiceForEnterprise : Boolean?) {
-    override fun toString(): String {
-        return "invoiceName: $invoiceName | invoiceType: $invoiceType | invoiceDate: $invoiceDate | invoiceUsage: $invoiceUsage | invoiceContributor: $invoiceContributor " +
-                "| invoiceStorageLocation: $invoiceStorageLocation | invoiceForEnterprise: $invoiceForEnterprise"
-    }
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class InvoiceModel(
+    @ColumnInfo(name = "invoice_name") var invoiceName: String,
+    @ColumnInfo(name = "invoice_type") var invoiceType: String?,
+    @ColumnInfo(name = "invoice_date") var invoiceDate: Long,
+    @ColumnInfo(name = "invoice_usage") var invoiceUsage: String?,
+    @ColumnInfo(name = "invoice_contributor") var invoiceContributor: String?,
+    @ColumnInfo(name = "invoice_storage_location") var invoiceStorageLocation: String,
+    @ColumnInfo(name = "invoice_for_enterprise") var invoiceForEnterprise: Boolean?
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
 }
