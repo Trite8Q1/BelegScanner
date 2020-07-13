@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 
-@Database(entities = [InvoiceModel::class], version = 1)
+@Database(entities = [InvoiceModel::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getInvoiceDao(): InvoiceDao

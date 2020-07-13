@@ -3,7 +3,6 @@ package de.emgress.belegscanner
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,8 +31,6 @@ private const val ARG_PARAM2 = "param2"
 class AddInvoiceItemFragment : BaseFragment() {
     private var param1: String? = null
     private var param2: String? = null
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,20 +117,16 @@ class AddInvoiceItemFragment : BaseFragment() {
                 alertDialogForInsert()
             }
             else {
-                // TODO: Implementieren von Couroutine mit GlobalScope.launch {}
                 GlobalScope.launch {
-                    val item = InvoiceModel(name.text.toString(), spinner.selectedItem.toString(), datetimeLong.toLong(),usage.text.toString(), contributor.text.toString(), storageLocation.text.toString(), optionalForEnterprise)
+                    val item = InvoiceModel(name.text.toString(), spinner.selectedItem.toString(), convertLongToTime(datetimeLong),usage.text.toString(), contributor.text.toString(), storageLocation.text.toString(), optionalForEnterprise)
                     val dao = context?.let { it1 -> AppDatabase.getDatabase(it1).getInvoiceDao() }
                     dao?.insertData(item)
-                    Log.i("test", "inserted $item to db")
 
                     GlobalScope.launch(Dispatchers.Main) {
                         navController.navigate(R.id.FirstFragment)
                         Snackbar.make(view, "Invoice item was added succesfully", Snackbar.LENGTH_LONG).show()
                     }
                 }
-
-
             }
         }
 
@@ -143,13 +137,28 @@ class AddInvoiceItemFragment : BaseFragment() {
         }
     }
 
-    fun alertDialogForInsert() {
+    private fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("dd.MM.yyyy HH:MM")
+        return format.format(date)
+    }
+
+    private fun currentTimeToLong(): Long {
+        return System.currentTimeMillis()
+    }
+
+    private fun convertDateToLong(date: String): Long {
+        val df = SimpleDateFormat("dd.MM.yyyy HH:MM")
+        return df.parse(date).time
+    }
+
+    private fun alertDialogForInsert() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(context)
         builder.setTitle("!!! ERROR !!!")
         builder.setMessage("The invoice name, invoice type, datetime and the storage location are required")
-        builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int ->
+        builder.setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
             dialogInterface.dismiss()
-        })
+        }
         builder.show()
     }
 
