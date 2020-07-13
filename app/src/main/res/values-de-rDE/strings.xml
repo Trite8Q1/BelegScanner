@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BelegScanner</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="first_fragment_label">Erstes Fragment</string>
+    <string name="add_invoice_item_label">Zweites Fragment</string>
+    <string name="next">Nächstes</string>
+    <string name="previous">Vorherige</string>
+    <string name="hello_first_fragment">Hallo erstes Fragment</string>
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="invoice_name">Name</string>
+    <string name="type_of_invoice">Art</string>
+    <string name="usage">Verwendung</string>
+    <string name="contributor">Beteiligte</string>
+    <string name="optional">Optional</string>
+    <string name="storage_location">Lagerort</string>
+    <string name="date_and_time">Datum und Zeit</string>
+    <string name="choose_picture">Foto auswählen</string>
+    <string name="save">Speichern</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="invoice_usage">Verwendung</string>
+    <string name="location">Ort</string>
+    <string name="now">Jetzt</string>
+    <string name="for_enterprise">Für Unternehmen</string>
+    <string name="document">Beleg</string>
+    <string name="receipt">Quittung</string>
+    <string name="Digital">Digital</string>
+</resources>

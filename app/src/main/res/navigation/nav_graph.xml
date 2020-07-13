@@ -14,6 +14,13 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/AddInvoiceItemFragment" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_FirstFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/AddInvoiceItemFragment"
@@ -24,5 +31,18 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="de.emgress.belegscanner.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_detailFragment_to_FirstFragment2"
+            app:destination="@id/FirstFragment" />
+
     </fragment>
 </navigation>

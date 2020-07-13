@@ -1,27 +1,20 @@
 package de.emgress.belegscanner
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.ContextMenu
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.util.DBUtil
+import android.widget.ListView
+import androidx.fragment.app.findFragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.adapter_invoice_list.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.coroutines.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : BaseFragment() {
-    private var items : ArrayList<InvoiceModel>? = null
-
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -32,11 +25,18 @@ class FirstFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // TODO: Implementieren von Couroutine mit GlobalScope.launch {}
+        val invoiceList = requireView().findViewById<ListView>(R.id.invoiceList)
+
+        invoiceList.setOnItemClickListener { parent, view, position, id ->
+            val action = FirstFragmentDirections.actionFirstFragmentToDetailFragment(id)
+            //val navController = findNavController()
+            view.findNavController().navigate(action)
+        }
+
         GlobalScope.launch {
-            val db = context?.let { it1 -> AppDatabase.getDatabase(it1).getInvoiceDao() }
-            val data = db?.getAll()
-            Log.i("test", "$data")
+            val dao = context?.let { it1 -> AppDatabase.getDatabase(it1).getInvoiceDao() }
+            val data = dao?.getAll()
+
 
             GlobalScope.launch(Dispatchers.Main) {
                 if (data != null) {
@@ -48,7 +48,5 @@ class FirstFragment : BaseFragment() {
                 }
             }
         }
-
-
     }
 }

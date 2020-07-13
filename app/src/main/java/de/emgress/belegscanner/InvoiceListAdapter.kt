@@ -26,7 +26,7 @@ class InvoiceListAdapter(val context : Context, val data : List<InvoiceModel>) :
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong()
+        return data[position].id
     }
 
     override fun getCount(): Int {

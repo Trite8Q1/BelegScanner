@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="invoice_types">
-        <item>Receipt</item>
-        <item>Document</item>
-        <item>Digital</item>
+        <item>@string/receipt</item>
+        <item>@string/document</item>
+        <item>@string/Digital</item>
     </string-array>
+
+
 </resources>
