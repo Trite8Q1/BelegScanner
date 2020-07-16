@@ -1,4 +1,4 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import de.emgress.belegscanner.Models.InvoiceModel
+import de.emgress.belegscanner.R
 
 class InvoiceListAdapter(val context : Context, val data : List<InvoiceModel>) : BaseAdapter() {
 

@@ -1,4 +1,4 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
