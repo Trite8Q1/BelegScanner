@@ -1,4 +1,4 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -13,6 +13,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.google.android.material.snackbar.Snackbar
+import de.emgress.belegscanner.Room.AppDatabase
+import de.emgress.belegscanner.Models.InvoiceModel
+import de.emgress.belegscanner.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -62,7 +65,8 @@ class AddInvoiceItemFragment : BaseFragment() {
         val storageLocation:EditText = requireView().findViewById(R.id.inputAddStorageLocation)
         val optional: RadioButton = requireView().findViewById(R.id.inputAddOptional)
 
-        context?.let { ArrayAdapter.createFromResource(it,R.array.invoice_types, android.R.layout.simple_spinner_item).also {
+        context?.let { ArrayAdapter.createFromResource(it,
+            R.array.invoice_types, android.R.layout.simple_spinner_item).also {
                 adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
@@ -70,9 +74,9 @@ class AddInvoiceItemFragment : BaseFragment() {
 
         btnSave.setOnClickListener {
             val navController: NavController = findNavController()
+            var optionalForEnterprise: Boolean? = false
+            var datetimeLong: Long? = null
 
-            var optionalForEnterprise: Boolean? = false //Boolean von "optional" (RadioButton)
-            var datetimeLong: Long? = null // Long von "dateTime" (RadioButton)
 
             if (dateTime.isChecked) {
                 datetimeLong  = Date().time
@@ -97,7 +101,7 @@ class AddInvoiceItemFragment : BaseFragment() {
                     position: Int,
                     id: Long
                 ) {
-                    if (spinner.selectedItem == "Receipt") {
+                    /* if (spinner.selectedItem == "Receipt") {
                         spinner.selectedItem.toString()
                     }
                     if (spinner.selectedItem == "Document") {
@@ -105,7 +109,7 @@ class AddInvoiceItemFragment : BaseFragment() {
                     }
                     if (spinner.selectedItem == "Digital") {
                         spinner.selectedItem.toString()
-                    }
+                    }*/
                 }
 
             }
@@ -118,12 +122,23 @@ class AddInvoiceItemFragment : BaseFragment() {
             }
             else {
                 GlobalScope.launch {
-                    val item = InvoiceModel(name.text.toString(), spinner.selectedItem.toString(), convertLongToTime(datetimeLong),usage.text.toString(), contributor.text.toString(), storageLocation.text.toString(), optionalForEnterprise)
-                    val dao = context?.let { it1 -> AppDatabase.getDatabase(it1).getInvoiceDao() }
+                    val item =
+                        InvoiceModel(
+                            name.text.toString(),
+                            spinner.selectedItem.toString(),
+                            convertLongToTime(datetimeLong),
+                            usage.text.toString(),
+                            contributor.text.toString(),
+                            storageLocation.text.toString(),
+                            optionalForEnterprise
+                        )
+                    val dao = context?.let { it1 -> AppDatabase.getDatabase(
+                        it1
+                    ).getInvoiceDao() }
                     dao?.insertData(item)
 
                     GlobalScope.launch(Dispatchers.Main) {
-                        navController.navigate(R.id.FirstFragment)
+                        navController.navigate(R.id.InvoiceListFragment)
                         Snackbar.make(view, "Invoice item was added succesfully", Snackbar.LENGTH_LONG).show()
                     }
                 }
@@ -132,24 +147,19 @@ class AddInvoiceItemFragment : BaseFragment() {
 
         btnCancel.setOnClickListener {
             val navController: NavController = findNavController()
-            navController.navigate(R.id.FirstFragment)
+            navController.navigate(R.id.InvoiceListFragment)
             Snackbar.make(view, "invoice item creation was canceled", Snackbar.LENGTH_LONG).show()
         }
     }
 
     private fun convertLongToTime(time: Long): String {
         val date = Date(time)
-        val format = SimpleDateFormat("dd.MM.yyyy HH:MM")
+        val format = SimpleDateFormat("dd.MM.yyyy HH:mm")
         return format.format(date)
     }
 
     private fun currentTimeToLong(): Long {
         return System.currentTimeMillis()
-    }
-
-    private fun convertDateToLong(date: String): Long {
-        val df = SimpleDateFormat("dd.MM.yyyy HH:MM")
-        return df.parse(date).time
     }
 
     private fun alertDialogForInsert() {
@@ -160,25 +170,5 @@ class AddInvoiceItemFragment : BaseFragment() {
             dialogInterface.dismiss()
         }
         builder.show()
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddInvoiceItemFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddInvoiceItemFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

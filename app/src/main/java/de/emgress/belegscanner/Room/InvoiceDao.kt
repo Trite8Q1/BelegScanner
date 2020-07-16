@@ -1,6 +1,7 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Room
 
 import androidx.room.*
+import de.emgress.belegscanner.Models.InvoiceModel
 
 @Dao
 interface InvoiceDao {

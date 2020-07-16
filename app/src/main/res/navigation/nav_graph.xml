@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/InvoiceListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="de.emgress.belegscanner.FirstFragment"
+        android:id="@+id/InvoiceListFragment"
+        android:name="de.emgress.belegscanner.Fragments.InvoiceListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_invoice_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -24,17 +24,17 @@
     </fragment>
     <fragment
         android:id="@+id/AddInvoiceItemFragment"
-        android:name="de.emgress.belegscanner.AddInvoiceItemFragment"
+        android:name="de.emgress.belegscanner.Fragments.AddInvoiceItemFragment"
         android:label="@string/add_invoice_item_label"
         tools:layout="@layout/fragment_add_invoice_item">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/InvoiceListFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="de.emgress.belegscanner.DetailFragment"
+        android:name="de.emgress.belegscanner.Fragments.DetailFragment"
         android:label="DetailFragment">
         <argument
             android:name="id"
@@ -42,7 +42,7 @@
             android:defaultValue="0L" />
         <action
             android:id="@+id/action_detailFragment_to_FirstFragment2"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/InvoiceListFragment" />
 
     </fragment>
 </navigation>

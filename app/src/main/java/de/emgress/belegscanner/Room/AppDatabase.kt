@@ -1,9 +1,8 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Room
 
 import android.content.Context
-import android.os.Bundle
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteOpenHelper
+import de.emgress.belegscanner.Models.InvoiceModel
 
 @Database(entities = [InvoiceModel::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
@@ -15,7 +14,8 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context) : AppDatabase {
-            val tmpInstance = INSTANCE
+            val tmpInstance =
+                INSTANCE
 
             if (tmpInstance != null) {
                 return tmpInstance

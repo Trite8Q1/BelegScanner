@@ -1,24 +1,18 @@
-package de.emgress.belegscanner
+package de.emgress.belegscanner.Fragments
 
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.Spinner
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.navArgs
+import android.widget.*
+import de.emgress.belegscanner.Room.AppDatabase
+import de.emgress.belegscanner.Models.InvoiceModel
+import de.emgress.belegscanner.R
+import kotlinx.android.synthetic.main.fragment_add_invoice_item.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.zip.Inflater
-import kotlin.properties.Delegates
 
 
 class DetailFragment: BaseFragment() {
@@ -71,13 +65,29 @@ class DetailFragment: BaseFragment() {
         var data: InvoiceModel? = null
         GlobalScope.launch {
             if (arguments != null) {
-                val dao = context?.let { it1 -> AppDatabase.getDatabase(it1).getInvoiceDao() }
+                val dao = context?.let { it1 -> AppDatabase.getDatabase(
+                    it1
+                ).getInvoiceDao() }
                 data = args?.let { dao?.getID(it) }
-                Log.i("test", "GETTING DATA FROM $data")
             }
 
             name.setText(data?.invoiceName)
-            // TODO: Spinner ausgeben, aber wie?
+
+            context?.let { it ->
+                ArrayAdapter.createFromResource(it,
+                R.array.invoice_types, android.R.layout.simple_spinner_item).also {
+                    adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+
+                val spinnerAdapter = spinner.adapter
+                repeat(spinner.adapter.count) {
+                    val item = spinnerAdapter.getItem(it)
+                    if (item == data?.invoiceType) {
+                        spinner.setSelection(it)
+                    }
+            } }
+
             dateTime.isChecked = true
             usage.setText(data?.invoiceUsage)
             contributor.setText(data?.invoiceContributor)
@@ -87,12 +97,9 @@ class DetailFragment: BaseFragment() {
             }
         }
 
-
-
         btnEdit.setOnClickListener {
             btnEdit.text = "Save"
             btnEdit.setBackgroundColor(Color.GREEN)
-
             name.isEnabled = true
             name.isClickable = true
             spinner.isEnabled = true
@@ -109,14 +116,14 @@ class DetailFragment: BaseFragment() {
             optional.isClickable = true
 
             btnEdit.setOnClickListener {
-                // Überarbeiten und Inserten
+                // TODO: Implementation to update the dataset in room db.
             }
         }
 
         btnDelete.setOnClickListener {
-
+            // TODO: Implementation to ensure that the dataset and listentry will be deleted.
         }
 
     }
-
+}
 }
